@@ -1,6 +1,12 @@
 <template lang="pug">
 v-app(dark='')
-  v-navigation-drawer(:mini-variant='miniVariant' :clipped='clipped' v-model='drawer' fixed='' floating='' app='')
+  v-navigation-drawer(:mini-variant='miniVariant' :clipped='clippedLeft' v-model='drawer' fixed='' floating='' app='')
+    v-img(:aspect-ratio='16/9' src='https://cdn.vuetifyjs.com/images/parallax/material.jpg')
+      v-layout.lightbox.white--text(pa-2='' column='' fill-height='')
+        v-spacer
+        v-flex(shrink='')
+          .subheading Jonathan Lee
+          .body-1 heyfromjonathan@gmail.com
     v-list.pax-2
       v-list-tile(v-for='(item, i) in items' :to='item.to' :key='i' router='' exact='')
         v-list-tile-action
@@ -13,19 +19,7 @@ v-app(dark='')
             v-icon(v-html="'visibility'")
           v-list-tile-content
             v-list-tile-title(v-text="'Collapse'")
-  v-toolbar(fixed='' app='')
-    v-btn(icon='' @click.stop='drawer = !drawer')
-      v-icon dialpad
-    v-toolbar-title(v-text='title')
-      v-spacer
-        v-btn(icon='' @click.stop='fixed = !fixed')
-          v-icon remove
-        v-btn(icon='' @click.stop='rightDrawer = !rightDrawer')
-          v-icon fingerprint
-  v-content
-    v-container
-      nuxt
-  v-navigation-drawer(:right='right' v-model='rightDrawer' :clipped='rightClipped' fixed='' temporary='')
+  v-navigation-drawer(:right='right' v-model='rightDrawer' :clipped='rightClipped' fixed temporary)
     v-list
       v-list-tile.pay-0(avatar='')
         v-list-tile-avatar
@@ -44,9 +38,18 @@ v-app(dark='')
           v-card-title.headline Lorem ipsum
           v-card-text
             | Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.
+  v-toolbar(fixed='' app='')
+    v-btn(icon @click.stop='drawer = !drawer')
+      v-icon dialpad
+    v-toolbar-title(v-text='title')
+      v-spacer
+        v-btn(icon='remove' @click.stop='fixed = !fixed')
+        v-btn(icon='' @click.stop='rightDrawer = !rightDrawer')
+          v-icon fingerprint
+  v-content
+    v-container
+      nuxt
 </template>
-
-
 <script>
   export default {
     data() {
@@ -65,11 +68,11 @@ v-app(dark='')
           ]
         },
         miniVariant: false,
-        clipped: false,
+        clippedLeft: false,
         drawer: true,
         right: true,
-        rightClipped: true,
-        rightDrawer: true,
+        rightClipped: false,
+        rightDrawer: false,
         title: 'Mark™'
       }
     }

@@ -83,7 +83,6 @@
       :right="rightPath"
       v-model="rightDrawer"
       temporary
-      fixed
     >
       <v-list>
         <v-list-tile @click.native="right = !right">

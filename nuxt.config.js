@@ -68,14 +68,14 @@ module.exports = {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
-        config.module.rules.push({
-          test: /\.txt|html$/,
-          use: 'raw-loader'
-        })
-        config.module.rules.push({
-          test: /\.csv$/,
-          use: 'csv-loader'
-        })
+              config.module.rules.push({
+        test: /\.txt|html$/,
+        use: 'raw-loader'
+      })
+      config.module.rules.push({
+        test: /\.csv$/,
+        use: 'csv-loader'
+      })
       }
     }
   }
